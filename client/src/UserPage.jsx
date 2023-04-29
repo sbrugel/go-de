@@ -55,7 +55,7 @@ const UserPage = ({ currentUser }) => {
   return (
     <>
       <Navingbar userID={id} />
-      <p>This is the user page of {user.name}</p>
+      <p>This is the user page of {user.name}. { currUser.id === user.id ? <p>This is your page!</p> : ''}</p>
       <hr />
       <p>
         <strong>{user.name}'s Recent Activity</strong>
