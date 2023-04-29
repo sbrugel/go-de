@@ -34,7 +34,9 @@ const Register = () => {
   
     return (
       <>
-        <div>
+        <div style={{
+          padding: '20px'
+        }}>
           <h1>Create a new account</h1>
           <p>Already have an account? <a href="/login">Sign in here.</a></p>
           <div class="p-6 mt-8">

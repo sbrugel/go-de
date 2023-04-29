@@ -35,7 +35,9 @@ const Login = ({ setLoginUser }) => {
 
   return (
     <>
-      <div>
+      <div style={{
+        padding: '20px'
+      }}>
         <h1>Login to your account</h1>
         <p>
           Don't have an account? <a href="/register">Register here.</a>

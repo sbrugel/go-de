@@ -13,8 +13,9 @@ function App() {
     <div className="App">
       <div className="App">
         <Routes>
-        <Route path="/" element={user && user._id ? <HomePage currentUser={ user } /> : <Login setLoginUser={ setLoginUser } />} />
+          <Route path="/" element={user && user._id ? <HomePage currentUser={ user } /> : <Login setLoginUser={ setLoginUser } />} />
           <Route path="/user/:id" element={user && user._id ? <UserPage currentUser={ user } /> : <Login setLoginUser={ setLoginUser } />} />
+          
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login setLoginUser={ setLoginUser } />} />
         </Routes>
