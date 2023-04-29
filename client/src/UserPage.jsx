@@ -7,8 +7,9 @@ import Col from "react-bootstrap/Col";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
 import {Button} from "react-bootstrap";
+
 const UserPage = ({ currentUser }) => {
   let { id } = useParams();
   const navigate = useNavigate();
