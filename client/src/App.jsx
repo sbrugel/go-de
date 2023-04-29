@@ -1,8 +1,8 @@
 import './App.css';
 import UserPage from './UserPage';
 import HomePage from './HomePage';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './Login';
+import Register from './Register';
 
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
