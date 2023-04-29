@@ -112,7 +112,6 @@ h1, h2, h3, h4, h5, h6 {
 .user-activities {
 	border-radius: 10px;
 	margin: 16px;
-	text-align: center;
 	height: auto;
 	background-color: var(--BG-COLOR-SECONDARY);
 }

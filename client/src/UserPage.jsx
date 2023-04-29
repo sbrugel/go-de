@@ -7,7 +7,8 @@ import Col from "react-bootstrap/Col";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {Button} from "react-bootstrap";
 const UserPage = ({ currentUser }) => {
   let { id } = useParams();
   const navigate = useNavigate();
@@ -68,14 +69,16 @@ const UserPage = ({ currentUser }) => {
       <Navingbar userID={currUser.id} />
       <Container>
         <Row>
-          <Col className="col-8">
+          <Col className="col-8" style={{textAlign:"center"}}>
             <p className="user-page-status">
               This is the user page of {user.name}.{" "}
               {currUser.id === user.id ? <p>This is your page!</p> : ""}
             </p>
             {currUser.id !== user.id ? (
-              <button
+              <Button
+                variant="secondary"
                 type="submit"
+                
                 onClick={async () => {
                   if (!isFollowing) {
                     axios
@@ -104,7 +107,7 @@ const UserPage = ({ currentUser }) => {
                 }}
               >
                 {!isFollowing ? "Follow" : "Unfollow"}
-              </button>
+              </Button>
             ) : (
               ""
             )}
@@ -116,7 +119,7 @@ const UserPage = ({ currentUser }) => {
           </Col>
           <Col className="col-4">
             <div className="user-followers">
-              <h1>Followed</h1>
+              <h1>Following</h1>
             </div>
           </Col>
         </Row>
