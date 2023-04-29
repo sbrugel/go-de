@@ -31,6 +31,7 @@ const LocationsPage = ({ currentUser }) => {
             <Navingbar userID={currentUser.id} />
             <h1>Locations</h1>
             { cardDisplay }
+			<div style={{width: '0', height: '0', marginBottom: '16px'}}>{/* Dummy to add some padding */}</div>
         </>
     )
 }
