@@ -121,6 +121,40 @@ app.post("/users/follow/:from/:to", (req, res) => {
                         })
                 })
         })
+})
+
+// add a new user to someone's following
+app.post("/users/unfollow/:from/:to", (req, res) => {
+    if (req.params.from === req.params.to) {
+        res.send({ message: "ERROR: User cannot unfollow themselves." });
+        return;
+    }
+
+    axios.get("http://localhost:5000/users/" + req.params.from)
+        .then((fromUser) => {
+            if (!fromUser.data) {
+                res.send({ message: "ERROR: Invalid fromUser." });
+                return;
+            }
+
+            axios.get("http://localhost:5000/users/" + req.params.to)
+                .then((toUser) => {
+                    if (!toUser.data) {
+                        res.send({ message: "ERROR: Invalid toUser." });
+                        return;
+                    }
+
+                    if (!fromUser.data.following.includes(toUser.data.id)) {
+                        res.send({ message: "ERROR: " + fromUser.data.name + " is not following " + toUser.data.name})
+                        return;
+                    }
+
+                    User.updateOne({ id: req.params.from }, { following: fromUser.data.following.filter(item => item != req.params.to) })
+                        .then(() => {
+                            res.send({ message: fromUser.data.name + " is no longer following " + toUser.data.name });
+                        })
+                })
+        })
     User.find({ id: req.params.from }).exec()
         .then((fromUser) => {
             
@@ -138,7 +172,8 @@ app.listen(port, () => {
     // axios.post("http://localhost:5000/register", user).then(res => {
     //     console.log(res.data.message);
     // })
-    axios.post("http://localhost:5000/users/follow/1/1").then(res => {
-        console.log(res.data.message);
-    })
+
+    // axios.post("http://localhost:5000/users/unfollow/1/3").then(res => {
+    //     console.log(res.data.message);
+    // })
 })
