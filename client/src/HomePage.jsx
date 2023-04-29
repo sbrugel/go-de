@@ -16,7 +16,7 @@ const HomePage = ({ currentUser }) => {
 			<Container className='HomePage'>
 				<Row>
 					<Col className='col-8'>
-						<ProgressHeader currentUser={ currentUser } current={60} max={100} />
+						<ProgressHeader currentUser={ currentUser } />
 						<LocationList />
 					</Col>
 					<Col className='col-4'>

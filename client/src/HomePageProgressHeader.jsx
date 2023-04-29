@@ -26,7 +26,7 @@ const ProgressHeader = ({ currentUser }) => {
 		<Container className='go-progress-header go-card'>
 			<Row>
 				<Col>
-					<h3 className='text-center'>You have visited {userEvents.length} location(s) out of {locations.length}. Ready to go somewhere new?</h3>
+					<h3 className='text-center'>You have visited {userEvents.length} location{userEvents.length === 1 ? '' : 's'} out of {locations.length}. Ready to go somewhere new?</h3>
 					<ProgressBar min={0} now={userEvents.length} visuallyHidden label={`${userEvents.length} out of ${locations.length}`} max={locations.length} />
 				</Col>
 			</Row>
