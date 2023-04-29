@@ -24,7 +24,6 @@ const HomePage = ({ currentUser }) => {
 					</Col>
 				</Row>
 			</Container>
-			
 		</>
 	);
 }
