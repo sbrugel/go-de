@@ -20,15 +20,17 @@ const PeoplePage = ({ currentUser }) => {
 
     useEffect(() => {
         if (!users) return;
-            
+        
         const ulUsers = users.map((u) => {
-            return <div className="people-grid">
+            return <div>
                 <Card className="profile-Card">
+                    <div style={{padding:"20px", backgroundColor:"var(--BG-COLOR-SECONDARY)"}}>
                 <Image thumbnail src="http://clipart-library.com/images_k/man-profile-silhouette/man-profile-silhouette-8.png"  />
                     <Card.Body className="profile-card-description">
                     
                 <a href="#" onClick={() => navigate("/user/" + u.id)}>{ u.name }</a>
                     </Card.Body>
+                    </div>
                 </Card>
             </div>
         })
@@ -40,7 +42,9 @@ const PeoplePage = ({ currentUser }) => {
             <Navingbar userID={currentUser.id} />
             <h1>Registered Users</h1>
             <ul>
+                <div className="people-grid">
                 { usersList }
+                </div>
             </ul>
         </>
     )
