@@ -1,22 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins&display=swap');
-
 /* Global variables and styles */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
 :root {
 	--BG-COLOR-PRIMARY: #528560;
 	--BG-COLOR-SECONDARY: #8BC3AF;
 	--BG-COLOR-TERTIARY: #00000020;
-	--BG-COLOR-GREY: #D6E4E5;
+	--BG-COLOR-LIGHTGREY: #D6E4E5;
+	--BG-COLOR-GREY: #C2D2D3;
+	--BG-COLOR-DARKGREY: #2d3131;
 
-	background-color: var(--BG-COLOR-GREY);
-	font-family: 'Poppins', 'Noto Sans', sans-serif;
+	--FONT-HEADING: 'EB Garamond', sans-serif;
+
+	--CARD-ROUNDING: 8px;
+
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
 	margin: 0;
+	background-color: var(--BG-COLOR-LIGHTGREY);
 }
 
-.progress-header {
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--FONT-HEADING) !important;
+}
+
+
+
+/* Override Bootstrap stuff */
+.progress {
+	background-color: var(--BG-COLOR-GREY) !important;
+}
+
+.progress-bar {
+	background-color: var(--BG-COLOR-PRIMARY) !important;
+}
+
+
+
+/* Custom elements */
+
+.go-card {
+	margin: 16px;
 	background-color: var(--BG-COLOR-SECONDARY);
+	border-radius: var(--CARD-ROUNDING);
+}
+
+.go-progress-header {
+	padding-top: 6px;
+}
+
+.go-progress-header .col {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.go-progress-header .progress {
+	border-radius: 0 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING);
+}
+
+.go-location-list {
+
 }
