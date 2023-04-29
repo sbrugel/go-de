@@ -1,11 +1,12 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { ProgressHeader } from './ProgressHeader';
-
+import { Navingbar } from './Navbar';
+import { UserPage } from './UserPage';
 function App() {
   return (
     <div className='App'>
-	  <ProgressHeader></ProgressHeader>
+	  <Navingbar></Navingbar>
+      <UserPage></UserPage>
     </div>
   );
 }

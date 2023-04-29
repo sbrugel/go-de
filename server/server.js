@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config({ path: "./config.env" });
 
-const axios = require("axios"); // FOR TESTING PURPOSES ONLY
+const axios = require("axios");
 
 const app = express();
 app.use(express.json());
@@ -28,15 +28,33 @@ const userSchema = new mongoose.Schema({
     following: [Number],
     regDate: Date
 });
+const locationSchema = new mongoose.Schema({
+    id: Number,
+    name: String,
+    imgURL: String,
+    description: String,
+    location: String
+})
+const eventSchema = new mongoose.Schema({
+    userID: Number, // who visited
+    locationID: Number, // where visited
+    date: Date,
+    comments: String
+})
 
 // models
 const User = new mongoose.model("User", userSchema);
+const Location = new mongoose.model("Location", locationSchema);
+const Event = new mongoose.model("Event", eventSchema);
 
-// TODO: endpoints
-app.get("/hello", (req, res) => {
-    res.json('Hello World!');
-});
-
+// == USER ENDPOINTS ==
+/*
+- register
+- get all
+- get by ID
+- follow (from, to)
+- unfollow (from, to)
+*/
 // add a user to the database (registration)
 app.post("/register", (req, res) => {
     const { name, password } = req.body;
@@ -155,11 +173,49 @@ app.post("/users/unfollow/:from/:to", (req, res) => {
                         })
                 })
         })
-    User.find({ id: req.params.from }).exec()
-        .then((fromUser) => {
-            
-        })
 })
+
+// == LOCATION ENDPOINTS ==
+/*
+- get all
+- get by ID
+*/
+// get all locations
+app.get("/locations", (req, res) => {
+    Location.find().exec()
+        .then((locations) => {
+            res.json(locations);
+        });
+});
+
+// get location by ID
+app.get("/locations/:i", (req, res) => {
+    Location.findOne({ id: req.params.i }).exec()
+        .then((location) => {
+            res.json(location);
+        });
+});
+
+// == EVENT ENDPOINTS ==
+/*
+- get all
+- get by user ID
+*/
+// get all events (idk if needed)
+app.get("/events", (req, res) => {
+    Event.find().exec()
+        .then((events) => {
+            res.json(events);
+        });
+});
+
+// get events by user ID
+app.get("/events/byuser/:uid", (req, res) => {
+    Event.find({ userID: req.params.uid }).exec()
+        .then((events) => {
+            res.json(events);
+        });
+});
 
 app.listen(port, () => {
     console.log('Server is now started');
@@ -176,4 +232,21 @@ app.listen(port, () => {
     // axios.post("http://localhost:5000/users/unfollow/1/3").then(res => {
     //     console.log(res.data.message);
     // })
+
+    let test;
+    // test = new Location({
+    //     id: 2,
+    //     name: "Kalmar Nyckel",
+    //     imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Kalmar_Nyckel_by_Jacob_H%C3%A4gg_cropped.jpg/1024px-Kalmar_Nyckel_by_Jacob_H%C3%A4gg_cropped.jpg",
+    //     description: "A Swedish ship built by the Dutch famed for carrying Swedish settlers to North America. A replica of the ship is located in Wilmington!",
+    //     location: "Wilmington, New Castle County, Delaware"
+    // })
+    // test.save()
+    // test = new Event({
+    //     userID: 1,
+    //     locationID: 1,
+    //     date: Date.now(),
+    //     comments: "I visited Rehoboth Beach! :D"
+    // });
+    // test.save()
 })
