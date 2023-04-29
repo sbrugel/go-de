@@ -62,7 +62,7 @@ const UserPage = ({ currentUser }) => {
 
   return (
     <>
-      <Navingbar userID={id} />
+      <Navingbar userID={currUser.id} />
       <p>This is the user page of {user.name}. { currUser.id === user.id ? <p>This is your page!</p> : ''}</p>
       {
         currUser.id !== user.id
@@ -93,9 +93,6 @@ const UserPage = ({ currentUser }) => {
         <strong>{user.name}'s Recent Activity</strong>
       </p>
       <ul>{feedDisplay}</ul>
-      <button type="submit" onClick={() => navigate("/user/4")}>
-        test to another page
-      </button>
       <ToastContainer />
     </>
   );

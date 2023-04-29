@@ -24,7 +24,7 @@ const Navingbar = ({ userID }) => { // user ID is the currently logged in user
         <Container>
           <Navbar.Brand style={{position:"relative", left:"0px"}} onClick={() => navigate("/")}>GO-DE</Navbar.Brand>
           <Nav>
-            <Nav.Link style={{color:"white"}} href="#">People</Nav.Link>
+            <Nav.Link style={{color:"white"}} onClick={() => navigate("/people")}>People</Nav.Link>
             <Nav.Link style={{color:"white"}} href="#locations">Locations</Nav.Link>
             <div style={{backgroundColor:"grey"}}>
             <Nav.Link style={{color:"white"}} onClick={() => navigate("/user/" + user.id)}>{ user.name }</Nav.Link>
