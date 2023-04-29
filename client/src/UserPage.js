@@ -58,7 +58,7 @@ const UserPage = ({ currentUser }) => {
       <p>This is the user page of {user.name}</p>
       <hr />
       <p>
-        <strong>{user.name}'s Feed</strong>
+        <strong>{user.name}'s Recent Activity</strong>
       </p>
       <ul>{feedDisplay}</ul>
       <button type="submit" onClick={() => navigate("/user/4")}>
