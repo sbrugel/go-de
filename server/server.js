@@ -56,6 +56,7 @@ const Event = new mongoose.model("Event", eventSchema);
 - unfollow (from, to)
 */
 // add a user to the database (registration)
+    // takes in a name and password (both strings)
 app.post("/register", (req, res) => {
     const { name, password } = req.body;
     User.findOne({ name: name }).exec()
@@ -198,9 +199,24 @@ app.get("/locations/:i", (req, res) => {
 
 // == EVENT ENDPOINTS ==
 /*
+- add/post a new event
 - get all
 - get by user ID
 */
+// add a new event
+app.post("/newevent", (req, res) => {
+    const { userID, locationID, date, comments } = req.body;
+    const event = new Event({ userID, locationID, date, comments });
+
+    event.save()
+        .then(() => {
+            res.send({ message: "Event has been registered" });
+        })
+        .catch((err) => {
+            res.send("An error occurred: " + err);
+        });
+})
+
 // get all events (idk if needed)
 app.get("/events", (req, res) => {
     Event.find().exec()
@@ -235,11 +251,11 @@ app.listen(port, () => {
 
     let test;
     // test = new Location({
-    //     id: 2,
-    //     name: "Kalmar Nyckel",
-    //     imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Kalmar_Nyckel_by_Jacob_H%C3%A4gg_cropped.jpg/1024px-Kalmar_Nyckel_by_Jacob_H%C3%A4gg_cropped.jpg",
-    //     description: "A Swedish ship built by the Dutch famed for carrying Swedish settlers to North America. A replica of the ship is located in Wilmington!",
-    //     location: "Wilmington, New Castle County, Delaware"
+    //     id: 10,
+    //     name: "The Old State House",
+    //     imgURL: "https://cdn.destguides.com/files/store/itinerarystop/12484/background_image/webp_medium_202112291737-b24fbbabb39e9d80b5ad9f95c842e357.webp",
+    //     description: `Built in 1791, the Old State House in the Dover Historic District served as Delaware's capitol during the United States' first years as an independent county.`,
+    //     location: "Dover, Kent County, Delaware"
     // })
     // test.save()
     // test = new Event({
@@ -249,4 +265,14 @@ app.listen(port, () => {
     //     comments: "I visited Rehoboth Beach! :D"
     // });
     // test.save()
+
+    // const event = {
+    //     userID: 4,
+    //     locationID: 10,
+    //     date: Date.now(),
+    //     comments: "A nice break from teaching CISC 210"
+    // }
+    // axios.post("http://localhost:5000/newevent", event).then(res => {
+    //     console.log(res.data.message);
+    // })
 })
