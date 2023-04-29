@@ -50,6 +50,7 @@ const Event = new mongoose.model("Event", eventSchema);
 // == USER ENDPOINTS ==
 /*
 - register
+- login
 - get all
 - get by ID
 - follow (from, to)
@@ -88,6 +89,22 @@ app.post("/register", (req, res) => {
                     .catch((err) => {
                         res.send("An error occurred: " + err);
                     });
+            }
+        })
+})
+
+app.post("/login", (req, res) => {
+    const { name, password } = req.body;
+    User.findOne({ name: name }).exec()
+        .then((user) => {
+            if (user) {
+                if (password === user.password) {
+                    res.send({ message: "Login succeeded!", user: user });
+                } else {
+                    res.send({ message: "ERROR: Wrong credentials!" });
+                }
+            } else {
+                res.send({ message: "ERROR: User doesn't exist!" });
             }
         })
 })
@@ -142,7 +159,7 @@ app.post("/users/follow/:from/:to", (req, res) => {
         })
 })
 
-// add a new user to someone's following
+// unfollow someone
 app.post("/users/unfollow/:from/:to", (req, res) => {
     if (req.params.from === req.params.to) {
         res.send({ message: "ERROR: User cannot unfollow themselves." });
@@ -204,6 +221,7 @@ app.get("/locations/:i", (req, res) => {
 - get by user ID
 */
 // add a new event
+    // params are userID (int), locationID (int), date (Date), comments (string)
 app.post("/newevent", (req, res) => {
     const { userID, locationID, date, comments } = req.body;
     const event = new Event({ userID, locationID, date, comments });
