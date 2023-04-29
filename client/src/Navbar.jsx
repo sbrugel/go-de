@@ -8,14 +8,21 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 const Navingbar = ({ userID }) => { // user ID is the currently logged in user, 0 for no user
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+	name: '',
+	password: '',
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/users/${userID}`).then((res) => {
-      setUser(res.data);
-    })
-  }, [])
+	if (userID) {
+		axios.get(`http://localhost:5000/users/${userID}`).then((res) => {
+			setUser({
+				...res.data,
+			});
+		});
+	}
+  }, []);
   
   return (
     <>
@@ -23,7 +30,7 @@ const Navingbar = ({ userID }) => { // user ID is the currently logged in user, 
                 paddingRight: "10px",}}>
         <Container>
           <Navbar.Brand style={{position:"relative", left:"0px"}} onClick={() => navigate("/")}>GO-DE</Navbar.Brand>
-		  { user
+		  { user && user.name && user.password
 		    ?
 				<Nav>
 					<Nav.Link style={{color:"white"}} onClick={() => navigate("/people")}>People</Nav.Link>
