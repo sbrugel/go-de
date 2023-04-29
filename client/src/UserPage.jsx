@@ -27,7 +27,7 @@ const UserPage = ({ currentUser }) => {
       setUser(res.data);
     });
     axios.get(`http://localhost:5000/events/byuser/${id}`).then((res) => {
-      setUserEvents(res.data.reverse());
+      setUserEvents(res.data.sort((a, b) => new Date(b.date) - new Date(a.date)));
     });
   }, [id]);
 
