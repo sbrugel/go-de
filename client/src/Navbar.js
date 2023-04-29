@@ -1,7 +1,7 @@
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from 'react-bootstrap/Container';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 export function Navingbar() {
   return (
     <>
