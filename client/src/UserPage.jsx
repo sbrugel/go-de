@@ -2,6 +2,8 @@ import Navingbar from "./Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserPage = ({ currentUser }) => {
   let { id } = useParams();
@@ -13,6 +15,8 @@ const UserPage = ({ currentUser }) => {
 
   const [feedDisplay, setFeedDisplay] = useState();
 
+  const [isFollowing, setIsFollowing] = useState(false);
+
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${id}`).then((res) => {
       setUser(res.data);
@@ -21,6 +25,10 @@ const UserPage = ({ currentUser }) => {
       setUserEvents(res.data);
     });
   }, [id]);
+
+  useEffect(() => {
+    setIsFollowing(currUser.following.includes(user.id));
+  }, [user]);
 
   useEffect(() => {
     if (!userEvents) return; // don't do anything when initially loading
@@ -56,6 +64,30 @@ const UserPage = ({ currentUser }) => {
     <>
       <Navingbar userID={id} />
       <p>This is the user page of {user.name}. { currUser.id === user.id ? <p>This is your page!</p> : ''}</p>
+      {
+        currUser.id !== user.id
+        ? <button type="submit" onClick={async () => {
+          if (!isFollowing) {
+            axios.post("http://localhost:5000/users/follow/" + currUser.id + "/" + user.id)
+              .then((res) => {
+                toast(res.data.message);
+              })
+          } else {
+            axios.post("http://localhost:5000/users/unfollow/" + currUser.id + "/" + user.id)
+              .then((res) => {
+                toast(res.data.message);
+              })
+          }
+          setIsFollowing(!isFollowing);
+        }}>
+            {
+              !isFollowing
+              ? 'Follow'
+              : 'Unfollow'
+            }
+          </button>
+        : ''
+      }
       <hr />
       <p>
         <strong>{user.name}'s Recent Activity</strong>
@@ -64,6 +96,7 @@ const UserPage = ({ currentUser }) => {
       <button type="submit" onClick={() => navigate("/user/4")}>
         test to another page
       </button>
+      <ToastContainer />
     </>
   );
 };
