@@ -1,9 +1,10 @@
 import './App.css';
-
+import {Navingbar} from './Navbar';
+import { UserPage } from './UserPage';
 function App() {
   return (
     <div className="App">
-      <p>Hello World!</p>
+      <UserPage></UserPage>
     </div>
   );
 }
