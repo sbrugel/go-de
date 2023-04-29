@@ -97,6 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 .go-location-card-img-wrapper {
 	max-height: 300px;
 	width: 100%;
+	border-radius: 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING) 0;
 	overflow: hidden;
 	position: relative;
 }
@@ -106,7 +107,6 @@ h1, h2, h3, h4, h5, h6 {
 	height: 100%;
 	object-position: bottom;
 	object-fit: cover;
-	border-radius: 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING) 0;
 	top: 0;
 }
 
