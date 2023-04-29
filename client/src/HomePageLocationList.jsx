@@ -4,8 +4,29 @@ import Col from 'react-bootstrap/Col';
 import './LocationCard'
 import './App.css';
 import { LocationCard } from './LocationCard';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const LocationList = () => {
+	const [locations, setLocations] = useState(null);
+	const [recommendedID, setRecommendedID] = useState(1);
+
+	useEffect(() => {
+		axios.get("http://localhost:5000/locations")
+			.then((res) => {
+				setLocations(res.data);
+			})
+	}, [])
+
+	useEffect(() => {
+		if (!locations) return;
+		setRecommendedID(Number.parseInt((Math.random() * locations.length) + 1));
+	}, [locations])
+
+	useEffect(() => {
+		console.log(recommendedID + " is the id")
+	}, [recommendedID])
+
 	return (
 		<Container className='go-location-list go-card'>
 			<Row>
@@ -14,7 +35,7 @@ export const LocationList = () => {
 				</Col>
 			</Row>
 			<Row>
-				<LocationCard title='Rehobeth Beach' description='This is a description.' imgURL='https://images-ext-2.discordapp.net/external/oQgk1PaIlIDCKwQPiKc2sqCCCJ_ODaU45kMSImblg7c/https/upload.wikimedia.org/wikipedia/commons/thumb/6/67/Rehoboth_Beach_boardwalk_looking_north_toward_Rehoboth_Avenue.jpg/1280px-Rehoboth_Beach_boardwalk_looking_north_toward_Rehoboth_Avenue.jpg' />
+				<LocationCard key={recommendedID} id={ recommendedID } />
 			</Row>
 		</Container>
 	);
