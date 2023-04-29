@@ -36,7 +36,7 @@ const Login = ({ setLoginUser }) => {
 
   return (
     <>
-	  <Navingbar userID='0' />
+	  <Navingbar userID={0} />
       <div style={{
         padding: '20px'
       }}>

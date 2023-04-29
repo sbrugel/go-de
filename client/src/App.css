@@ -52,6 +52,11 @@ li {
 	padding-right: 0 !important;
 }
 
+.navbar {
+	background-color: var(--BG-COLOR-PRIMARY) !important;
+	color: white !important;
+}
+
 .progress {
 	background-color: var(--BG-COLOR-GREY) !important;
 }
