@@ -29,7 +29,7 @@ const Login = ({ setLoginUser }) => {
     axios.post("http://localhost:5000/login", user).then((res) => {
       toast(res.data.message);
       setLoginUser(res.data.user);
-      navigate("/user/" + res.data.user.id);
+      navigate("/");
     });
   };
 

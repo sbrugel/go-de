@@ -1,6 +1,7 @@
 import './App.css';
 import Navingbar from './Navbar';
 import UserPage from './UserPage';
+import HomePage from './HomePage';
 import Login from './components/Login';
 import Register from './components/Register';
 
@@ -13,7 +14,8 @@ function App() {
     <div className="App">
       <div className="App">
         <Routes>
-          <Route path="/user/:id" element={user && user._id ? <UserPage /> : <Login setLoginUser={ setLoginUser } />} />
+        <Route path="/" element={user && user._id ? <HomePage currentUser={ user } /> : <Login setLoginUser={ setLoginUser } />} />
+          <Route path="/user/:id" element={user && user._id ? <UserPage currentUser={ user } /> : <Login setLoginUser={ setLoginUser } />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login setLoginUser={ setLoginUser } />} />
         </Routes>

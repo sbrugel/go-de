@@ -2,15 +2,17 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Navingbar } from './Navbar';
+import Navingbar from './Navbar';
 import { ProgressHeader } from './HomePageProgressHeader';
 import { LocationList } from './HomePageLocationList';
 import './App.css';
+import { useState } from 'react';
 
-function HomePage() {
+const HomePage = ({ currentUser }) => {
+	const [currUser, setCurrUser] = useState(currentUser);
 	return (
 		<>
-			<Navingbar></Navingbar>
+			<Navingbar userID={ currUser.id } />
 			<Container className='HomePage'>
 				<Row>
 					<Col className='col-8'>
@@ -22,6 +24,7 @@ function HomePage() {
 					</Col>
 				</Row>
 			</Container>
+			<h1>Hello, { currUser.name }!</h1>
 		</>
 	);
 }
