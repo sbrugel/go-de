@@ -27,7 +27,7 @@ const UserPage = ({ currentUser }) => {
       setUser(res.data);
     });
     axios.get(`http://localhost:5000/events/byuser/${id}`).then((res) => {
-      setUserEvents(res.data);
+      setUserEvents(res.data.reverse());
     });
   }, [id]);
 
@@ -57,7 +57,7 @@ const UserPage = ({ currentUser }) => {
         const eventLocation = locationResponse.data.name;
         return (
           <li key={event.id}>
-            <strong>{eventUser}</strong> went to <strong>{eventLocation}</strong> on <u>{ new Date(event.date).toLocaleDateString('en-us', { year: 'numeric', month: 'long', day: 'numeric' })}</u>: "{event.comments}"
+            <strong>{eventUser}</strong> went to <strong>{eventLocation}</strong> on <u>{ new Date(event.date).toLocaleDateString('en-us', { year: 'numeric', month: 'long', day: 'numeric' })}</u>{ event.comments ? `: "${event.comments}"` : '.'}
           </li>
         );
       })

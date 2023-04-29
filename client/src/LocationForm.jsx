@@ -41,7 +41,7 @@ const LocationForm = ({ currentUser }) => {
         <>
             <Navingbar userID={currentUser.id} />
             <h1>So you've visited { name }...</h1>
-            <LocationCard key={locationId} id={locationId} showButton={false} />
+            <LocationCard key={locationId} id={locationId} currentUser={currentUser} showButton={false} />
             <hr />
             <h2>When did you visit?</h2>
             <div style={{
@@ -55,6 +55,7 @@ const LocationForm = ({ currentUser }) => {
                     maxDate={new Date()}
                 />
             </div>
+            <br />
             <h2>Any remarks about your visit?</h2>
             <div style={{
                 display: "flex",

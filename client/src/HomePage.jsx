@@ -17,7 +17,7 @@ const HomePage = ({ currentUser }) => {
 				<Row>
 					<Col className='col-8'>
 						<ProgressHeader currentUser={ currentUser } />
-						<LocationList />
+						<LocationList currentUser={currentUser} />
 					</Col>
 					<Col className='col-4'>
 						<div className='go-card' style={{width: '100%', height: '100%'}}></div>
