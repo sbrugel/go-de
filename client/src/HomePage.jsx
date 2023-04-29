@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navingbar from './Navbar';
-import { ProgressHeader } from './HomePageProgressHeader';
+import ProgressHeader from './HomePageProgressHeader';
 import { LocationList } from './HomePageLocationList';
 import './App.css';
 import { useState } from 'react';
@@ -16,7 +16,7 @@ const HomePage = ({ currentUser }) => {
 			<Container className='HomePage'>
 				<Row>
 					<Col className='col-8'>
-						<ProgressHeader current={60} max={100} />
+						<ProgressHeader currentUser={ currentUser } current={60} max={100} />
 						<LocationList />
 					</Col>
 					<Col className='col-4'>
