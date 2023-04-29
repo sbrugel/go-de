@@ -56,7 +56,7 @@ const UserPage = ({ currentUser }) => {
         const eventLocation = locationResponse.data.name;
         return (
           <li key={event.id}>
-            {eventUser} went to {eventLocation}: "{event.comments}"
+            <strong>{eventUser}</strong> went to <strong>{eventLocation}</strong> on DATE: "{event.comments}"
           </li>
         );
       })
