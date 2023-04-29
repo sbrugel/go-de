@@ -140,3 +140,18 @@ li {
 	height: auto;
 	background-color: var(--BG-COLOR-SECONDARY);
 }
+
+.people-grid {
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(299px, 299px));
+    grid-gap: 20px;
+    padding: 20px;
+
+}
+.profile-Card {
+	height: 200px;
+	
+}
+.profile-card-description {
+	text-align: center;
+}
