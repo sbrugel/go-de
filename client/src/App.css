@@ -12,6 +12,7 @@
 
 	--FONT-HEADING: 'EB Garamond', sans-serif;
 
+	--CARD-PADDING-TOP: 6px;
 	--CARD-ROUNDING: 8px;
 
 	-webkit-font-smoothing: antialiased;
@@ -31,6 +32,12 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* Override Bootstrap stuff */
+.col {
+	padding-top: var(--CARD-PADDING-TOP);
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
 .progress {
 	background-color: var(--BG-COLOR-GREY) !important;
 }
@@ -49,23 +56,42 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: var(--CARD-ROUNDING);
 }
 
-.go-progress-header {
-	padding-top: 6px;
-}
-
-.go-progress-header .col {
-	padding-left: 0;
-	padding-right: 0;
-}
-
 .go-progress-header .progress {
 	border-radius: 0 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING);
 }
 
-.go-location-list {
+.go-location-list .col {
+	margin-top: 0;
+	padding-top: 0;
+}
 
+.go-location-card {
+	margin-bottom: 0;
+}
+
+.go-location-card .col {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.go-location-card h4 {
+	margin-top: var(--CARD-PADDING-TOP);
+}
+
+.go-location-card-img-wrapper {
+	max-height: 300px;
+	width: 100%;
+	overflow: hidden;
 }
 
 .go-location-card img {
-	height: 300px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING) 0;
+}
+
+.go-location-card p {
+	text-indent: 1.5em;
+	margin-left: 8px;
 }

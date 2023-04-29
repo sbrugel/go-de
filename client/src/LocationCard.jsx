@@ -3,16 +3,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './App.css';
 
-export function LocationCard(props) {
+export const LocationCard = ({ title, description, imgURL }) => {
 	return (
 		<Container className='go-location-card go-card'>
 			<Row>
-				<Col xs={2}>
-					<h4 className='go-location-card-title'>{props.title}</h4>
-					<p>{props.description}</p>
+				<Col className='col-6'>
+					<h4>{title}</h4>
+					<p>{description}</p>
 				</Col>
-				<Col xs={1}>
-					<img src={props.img} alt={props.title} />
+				<Col className='col-6'>
+					<div className='go-location-card-img-wrapper'>
+						<img src={imgURL} alt={title} />
+					</div>
 				</Col>
 			</Row>
 		</Container>
