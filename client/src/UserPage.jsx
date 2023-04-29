@@ -1,10 +1,14 @@
 import Navingbar from "./Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {Button} from "react-bootstrap";
 const UserPage = ({ currentUser }) => {
   let { id } = useParams();
   const navigate = useNavigate();
@@ -63,36 +67,63 @@ const UserPage = ({ currentUser }) => {
   return (
     <>
       <Navingbar userID={currUser.id} />
-      <p>This is the user page of {user.name}. { currUser.id === user.id ? <p>This is your page!</p> : ''}</p>
-      {
-        currUser.id !== user.id
-        ? <button type="submit" onClick={async () => {
-          if (!isFollowing) {
-            axios.post("http://localhost:5000/users/follow/" + currUser.id + "/" + user.id)
-              .then((res) => {
-                toast(res.data.message);
-              })
-          } else {
-            axios.post("http://localhost:5000/users/unfollow/" + currUser.id + "/" + user.id)
-              .then((res) => {
-                toast(res.data.message);
-              })
-          }
-          setIsFollowing(!isFollowing);
-        }}>
-            {
-              !isFollowing
-              ? 'Follow'
-              : 'Unfollow'
-            }
-          </button>
-        : ''
-      }
-      <hr />
-      <p>
-        <strong>{user.name}'s Recent Activity</strong>
-      </p>
-      <ul>{feedDisplay}</ul>
+      <Container>
+        <Row>
+          <Col className="col-8" style={{textAlign:"center"}}>
+            <p className="user-page-status">
+              This is the user page of {user.name}.{" "}
+              {currUser.id === user.id ? <p>This is your page!</p> : ""}
+            </p>
+            {currUser.id !== user.id ? (
+              <Button
+                variant="secondary"
+                type="submit"
+                
+                onClick={async () => {
+                  if (!isFollowing) {
+                    axios
+                      .post(
+                        "http://localhost:5000/users/follow/" +
+                          currUser.id +
+                          "/" +
+                          user.id
+                      )
+                      .then((res) => {
+                        toast(res.data.message);
+                      });
+                  } else {
+                    axios
+                      .post(
+                        "http://localhost:5000/users/unfollow/" +
+                          currUser.id +
+                          "/" +
+                          user.id
+                      )
+                      .then((res) => {
+                        toast(res.data.message);
+                      });
+                  }
+                  setIsFollowing(!isFollowing);
+                }}
+              >
+                {!isFollowing ? "Follow" : "Unfollow"}
+              </Button>
+            ) : (
+              ""
+            )}
+            <hr />
+            <p className="user-activities">
+              <strong>{user.name}'s Recent Activity</strong>
+            </p>
+            <ul>{feedDisplay}</ul>
+          </Col>
+          <Col className="col-4">
+            <div className="user-followers">
+              <h1>Following</h1>
+            </div>
+          </Col>
+        </Row>
+      </Container>
       <ToastContainer />
     </>
   );
