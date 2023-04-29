@@ -70,10 +70,10 @@ const UserPage = ({ currentUser }) => {
       <Container>
         <Row>
           <Col className="col-8" style={{textAlign:"center"}}>
-            <p className="user-page-status">
-              This is the user page of {user.name}.{" "}
+            <h3 className="user-page-status">
+              {user.name}'s Profile
               {currUser.id === user.id ? <p>This is your page!</p> : ""}
-            </p>
+            </h3>
             {currUser.id !== user.id ? (
               <Button
                 variant="secondary"
