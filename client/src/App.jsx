@@ -1,5 +1,4 @@
 import './App.css';
-import Navingbar from './Navbar';
 import UserPage from './UserPage';
 import HomePage from './HomePage';
 import Login from './components/Login';
@@ -19,7 +18,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login setLoginUser={ setLoginUser } />} />
         </Routes>
-    </div>
+      </div>
     </div>
   );
 }
