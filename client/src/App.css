@@ -30,6 +30,18 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* Override Bootstrap stuff */
+.btn-primary {
+	--bs-btn-color: #000 !important;
+	--bs-btn-bg: var(--BG-COLOR-SECONDARY) !important;
+	--bs-btn-border-color: var(--BG-COLOR-SECONDARY) !important;
+	--bs-btn-hover-bg: var(--BG-COLOR-PRIMARY) !important;
+	--bs-btn-hover-border-color: var(--BG-COLOR-PRIMARY) !important;
+	--bs-btn-active-bg: var(--BG-COLOR-SECONDARY) !important;
+	--bs-btn-active-border-color: var(--BG-COLOR-SECONDARY) !important;
+	--bs-btn-disabled-bg: var(--BG-COLOR-PRIMARY) !important;
+	--bs-btn-disabled-border-color: var(--BG-COLOR-PRIMARY) !important;
+}
+
 .col {
 	padding-top: var(--CARD-PADDING-TOP);
 	padding-left: 0 !important;
@@ -76,10 +88,17 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: var(--CARD-PADDING-TOP);
 }
 
+.go-location-card-visited-btn {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
 .go-location-card-img-wrapper {
 	max-height: 300px;
 	width: 100%;
 	overflow: hidden;
+	position: relative;
 }
 
 .go-location-card img {
@@ -88,6 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 	object-position: bottom;
 	object-fit: cover;
 	border-radius: 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING) 0;
+	top: 0;
 }
 
 .go-location-card p {
