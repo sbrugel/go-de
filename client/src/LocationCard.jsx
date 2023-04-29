@@ -4,9 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import './App.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export const LocationCard = ({ id }) => {
+	const navigate = useNavigate();
 	const [location, setLocation] = useState(null);
 
 	useEffect(() => {
@@ -29,7 +31,7 @@ export const LocationCard = ({ id }) => {
 						<Col className='col-6'>
 							<div className='go-location-card-img-wrapper'>
 								<img src={location.imgURL} alt={location.name} />
-								<Button className='go-location-card-visited-btn'>Mark Visited</Button>
+								<Button className='go-location-card-visited-btn' onClick={() => navigate("/submit/" + location.id)}>Mark Visited</Button>
 							</div>
 						</Col>
 					</Row>

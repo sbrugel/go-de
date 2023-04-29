@@ -56,7 +56,7 @@ const UserPage = ({ currentUser }) => {
         const eventLocation = locationResponse.data.name;
         return (
           <li key={event.id}>
-            <strong>{eventUser}</strong> went to <strong>{eventLocation}</strong> on DATE: "{event.comments}"
+            <strong>{eventUser}</strong> went to <strong>{eventLocation}</strong> on <u>{ new Date(event.date).toLocaleDateString('en-us', { year: 'numeric', month: 'long', day: 'numeric' })}</u>: "{event.comments}"
           </li>
         );
       })
@@ -72,7 +72,6 @@ const UserPage = ({ currentUser }) => {
           <Col className="col-8" style={{textAlign:"center"}}>
             <h3 className="user-page-status">
               {user.name}'s Profile
-              {currUser.id === user.id ? <p>This is your page!</p> : ""}
             </h3>
             {currUser.id !== user.id ? (
               <Button
