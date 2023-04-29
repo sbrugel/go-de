@@ -1,9 +1,11 @@
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { ProgressHeader } from './ProgressHeader';
 
 function App() {
   return (
-    <div className="App">
-      <p>Hello World!</p>
+    <div className='App'>
+	  <ProgressHeader></ProgressHeader>
     </div>
   );
 }
