@@ -7,8 +7,9 @@ import Col from "react-bootstrap/Col";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
 import {Button} from "react-bootstrap";
+
 const UserPage = ({ currentUser }) => {
   let { id } = useParams();
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const UserPage = ({ currentUser }) => {
         const eventLocation = locationResponse.data.name;
         return (
           <li key={event.id}>
-            {eventUser} went to {eventLocation}: "{event.comments}"
+            <strong>{eventUser}</strong> went to <strong>{eventLocation}</strong> on <u>{ new Date(event.date).toLocaleDateString('en-us', { year: 'numeric', month: 'long', day: 'numeric' })}</u>: "{event.comments}"
           </li>
         );
       })
@@ -72,7 +73,6 @@ const UserPage = ({ currentUser }) => {
           <Col className="col-8" style={{textAlign:"center"}}>
             <h3 className="user-page-status">
               {user.name}'s Profile
-              {currUser.id === user.id ? <p>This is your page!</p> : ""}
             </h3>
             {currUser.id !== user.id ? (
               <Button

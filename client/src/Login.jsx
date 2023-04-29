@@ -4,6 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import Navingbar from './Navbar';
 
 const Login = ({ setLoginUser }) => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const Login = ({ setLoginUser }) => {
 
   return (
     <>
+	  <Navingbar userID={0} />
       <div style={{
         padding: '20px'
       }}>

@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navingbar from './Navbar';
 
 const Register = () => {
     const [user, setUser] = useState({
@@ -34,6 +35,7 @@ const Register = () => {
   
     return (
       <>
+	    <Navingbar user={0} />
         <div style={{
           padding: '20px'
         }}>
