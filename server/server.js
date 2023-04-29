@@ -109,7 +109,7 @@ app.post("/login", (req, res) => {
         })
 })
 
-// get all users (idk if we need this)
+// get all users
 app.get("/users", (req, res) => {
     User.find().exec()
         .then((users) => {
@@ -153,7 +153,7 @@ app.post("/users/follow/:from/:to", (req, res) => {
 
                     User.updateOne({ id: req.params.from }, { following: [...fromUser.data.following, req.params.to] })
                         .then(() => {
-                            res.send({ message: fromUser.data.name + " is now following " + toUser.data.name });
+                            res.send({ message: "You are now following " + toUser.data.name });
                         })
                 })
         })
@@ -187,7 +187,7 @@ app.post("/users/unfollow/:from/:to", (req, res) => {
 
                     User.updateOne({ id: req.params.from }, { following: fromUser.data.following.filter(item => item != req.params.to) })
                         .then(() => {
-                            res.send({ message: fromUser.data.name + " is no longer following " + toUser.data.name });
+                            res.send({ message: "You are no longer following " + toUser.data.name });
                         })
                 })
         })
@@ -228,14 +228,14 @@ app.post("/newevent", (req, res) => {
 
     event.save()
         .then(() => {
-            res.send({ message: "Event has been registered" });
+            res.send({ message: "Your activity has been posted!" });
         })
         .catch((err) => {
             res.send("An error occurred: " + err);
         });
 })
 
-// get all events (idk if needed)
+// get all events
 app.get("/events", (req, res) => {
     Event.find().exec()
         .then((events) => {
@@ -253,44 +253,4 @@ app.get("/events/byuser/:uid", (req, res) => {
 
 app.listen(port, () => {
     console.log('Server is now started');
-
-    // const user = {
-    //     name: 'prof_roosen',
-    //     password: 'raspberrypis'
-    // };
-    // console.log('posting user');
-    // axios.post("http://localhost:5000/register", user).then(res => {
-    //     console.log(res.data.message);
-    // })
-
-    // axios.post("http://localhost:5000/users/unfollow/1/3").then(res => {
-    //     console.log(res.data.message);
-    // })
-
-    let test;
-    // test = new Location({
-    //     id: 10,
-    //     name: "The Old State House",
-    //     imgURL: "https://cdn.destguides.com/files/store/itinerarystop/12484/background_image/webp_medium_202112291737-b24fbbabb39e9d80b5ad9f95c842e357.webp",
-    //     description: `Built in 1791, the Old State House in the Dover Historic District served as Delaware's capitol during the United States' first years as an independent county.`,
-    //     location: "Dover, Kent County, Delaware"
-    // })
-    // test.save()
-    // test = new Event({
-    //     userID: 1,
-    //     locationID: 1,
-    //     date: Date.now(),
-    //     comments: "I visited Rehoboth Beach! :D"
-    // });
-    // test.save()
-
-    // const event = {
-    //     userID: 4,
-    //     locationID: 10,
-    //     date: Date.now(),
-    //     comments: "A nice break from teaching CISC 210"
-    // }
-    // axios.post("http://localhost:5000/newevent", event).then(res => {
-    //     console.log(res.data.message);
-    // })
 })

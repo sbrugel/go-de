@@ -7,7 +7,7 @@ import { LocationCard } from './LocationCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export const LocationList = () => {
+export const LocationList = ({ currentUser }) => {
 	const [locations, setLocations] = useState(null);
 	const [recommendedID, setRecommendedID] = useState(1);
 
@@ -35,7 +35,7 @@ export const LocationList = () => {
 				</Col>
 			</Row>
 			<Row>
-				<LocationCard key={recommendedID} id={ recommendedID } />
+				<LocationCard key={recommendedID} id={ recommendedID } currentUser={currentUser} />
 			</Row>
 		</Container>
 	);

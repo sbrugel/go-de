@@ -7,15 +7,25 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-export const LocationCard = ({ id, showButton }) => {
+export const LocationCard = ({ id, showButton, currentUser }) => {
 	const navigate = useNavigate();
 	const [location, setLocation] = useState(null);
+	const [toggleButton, setToggleButton] = useState(showButton);
 
 	useEffect(() => {
 		console.log('render with ID ' + id)
 		axios.get("http://localhost:5000/locations/" + id)
 			.then((res) => {
 				setLocation(res.data);
+			})
+		axios.get("http://localhost:5000/events/byuser/" + currentUser.id)
+			.then((res) => {
+				for (const event of res.data) {
+					if (event.locationID === id) {
+						console.log('nope')
+						setToggleButton(false);
+					}
+				}
 			})
 	}, [])
 
@@ -31,7 +41,7 @@ export const LocationCard = ({ id, showButton }) => {
 						<Col className='col-6'>
 							<div className='go-location-card-img-wrapper'>
 								<img src={location.imgURL} alt={location.name} />
-								{ showButton ? <Button className='go-location-card-visited-btn' onClick={() => navigate("/submit/" + location.id)}>Mark Visited</Button> : ''}
+								{ toggleButton ? <Button className='go-location-card-visited-btn' onClick={() => navigate("/submit/" + location.id)}>Mark Visited</Button> : ''}
 							</div>
 						</Col>
 					</Row>

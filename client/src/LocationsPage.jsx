@@ -20,7 +20,7 @@ const LocationsPage = ({ currentUser }) => {
         if (!locations) return;
 
         const display = locations.map((loc) => {
-            return <LocationCard id={loc.id} />
+            return <LocationCard id={loc.id}  currentUser={currentUser} />
         })
 
         setCardDisplay(display);
