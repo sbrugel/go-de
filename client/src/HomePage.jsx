@@ -88,7 +88,7 @@ const HomePage = ({ currentUser }) => {
 						<ProgressHeader currentUser={ currUser } />
 						<LocationList currentUser={currUser} />
 					</Col>
-					<Col className='col-4 overflow-auto' style={{ maxHeight: "450px" }}>
+					<Col className='col-4 overflow-y-auto' style={{ maxHeight: "450px" }}>
 						<div className='go-card' style={{width: '100%', height: '100%', padding: '10px'}}>
 							<h2>Your Feed</h2>
 							<ul>
