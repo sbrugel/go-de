@@ -145,8 +145,10 @@ li {
 .go-login-wrapper {
 	margin: 0 auto;
 	text-align: center;
-	width: 25%;
+	width: 30%;
 	margin-top: 5vh;
+	background-color: var(--BG-COLOR-LIGHTGREY);
+	padding: 16px;
 }
 
 .go-login-wrapper p {

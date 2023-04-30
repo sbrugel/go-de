@@ -39,7 +39,7 @@ const Register = () => {
     return (
       <>
 	    <Navingbar user={0} />
-        <div className="go-login-wrapper">
+        <div className="go-login-wrapper go-card">
           <h1>Create a new account</h1>
           <p>
 			Already have an account? <a href="/login">Sign in here.</a>
