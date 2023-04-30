@@ -15,7 +15,7 @@ const UserPage = ({ currentUser }) => {
   let { id } = useParams();
   const navigate = useNavigate();
 
-  const [currUser, setCurrUser] = useState(currentUser);
+  const [currUser] = useState(currentUser);
   const [user, setUser] = useState({});
   const [userEvents, setUserEvents] = useState(null);
 
@@ -42,6 +42,7 @@ const UserPage = ({ currentUser }) => {
     createFollowingDisplay().then((res) => {
       setFollowingDisplay(res);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   useEffect(() => {
     if (!userEvents) return; // don't do anything when initially loading
@@ -65,6 +66,7 @@ const UserPage = ({ currentUser }) => {
             </div>
           )
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEvents]);
 
   const createFeed = async () => {
@@ -108,7 +110,7 @@ const UserPage = ({ currentUser }) => {
         const eventUser = userResponse.data.name;
         return (
           <li key={u}>
-            <a href="#" onClick={() => navigate("/user/" + u)}>
+            <a href="#a" onClick={() => navigate("/user/" + u)}>
               {eventUser}
             </a>
           </li>

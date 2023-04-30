@@ -22,6 +22,7 @@ const Navingbar = ({ userID }) => { // user ID is the currently logged in user, 
 			});
 		});
 	}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   return (

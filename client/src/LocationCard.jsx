@@ -43,6 +43,7 @@ export const LocationCard = ({ id, showButton, currentUser }) => {
 						})
 				}
 			})
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	if (location) {

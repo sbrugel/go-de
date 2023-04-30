@@ -14,6 +14,7 @@ const ProgressHeader = ({ currentUser }) => {
 		axios.get(`http://localhost:5000/events/byuser/${currentUser.id}`).then((res) => {
 			setUserEvents(res.data);
 		})
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	useEffect(() => {

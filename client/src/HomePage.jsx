@@ -19,12 +19,14 @@ const HomePage = ({ currentUser }) => {
 			.then((res) => {
 				setCurrUser(currentUser);
 			})
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	useEffect(() => {
 		console.log(currUser)
 		console.log('dfsdfsd')
 		createFeed();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currUser])
 
 	const createFeed = async () => {

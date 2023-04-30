@@ -1,7 +1,6 @@
 import Navingbar from "./Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { LocationCard } from "./LocationCard";
 
 const LocationsPage = ({ currentUser }) => {
@@ -24,6 +23,7 @@ const LocationsPage = ({ currentUser }) => {
         })
 
         setCardDisplay(display);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [locations])
 
     return (
