@@ -36,7 +36,7 @@ export const LocationCard = ({ id, showButton, currentUser }) => {
 					<Row>
 						<Col className='col-6'>
 							<h4>{location.name}</h4>
-							<p>{location.description}</p>
+							<p style={{padding:"5px"}}>{location.description}</p>
 						</Col>
 						<Col className='col-6'>
 							<div className='go-location-card-img-wrapper'>
