@@ -2,13 +2,13 @@ import Navingbar from "./Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card , Form} from "react-bootstrap";
 import {Image }from "react-bootstrap";
 const PeoplePage = ({ currentUser }) => {
     const navigate = useNavigate();
 
     const [users, setUsers] = useState([]);
-
+    const [searchPeople, setSearchPeople]=useState("");
     const [usersList, setUsersList] = useState(null);
 
     useEffect(() => {
@@ -17,11 +17,19 @@ const PeoplePage = ({ currentUser }) => {
                 setUsers(res.data);
             })
     }, [])
-
+    function determineSearch({u}){
+        console.log("rerender");
+        if(u.name !== undefined){
+        if(u.name.toLowerCase().includes(searchPeople.toLowerCase)||searchPeople==="" ||searchPeople.toLowerCase().includes(u.name.toLowerCase()) ){
+            return true;
+        } 
+        }
+        return false;
+    }
     useEffect(() => {
         if (!users) return;
-        
         const ulUsers = users.map((u) => {
+            if((u.name.toLowerCase().includes(searchPeople.toLowerCase())||searchPeople==="" ||searchPeople.toLowerCase().includes(u.name.toLowerCase()) )){
             return <div onClick={() => navigate("/user/" + u.id)}>
                 <Card className="profile-Card">
                
@@ -34,20 +42,30 @@ const PeoplePage = ({ currentUser }) => {
                     </div>
                 </Card>
             </div>
+            }
         })
         setUsersList(ulUsers);
-    }, [users])
+    }, [users,searchPeople])
 
     return (
-        <>
+        <div>
             <Navingbar userID={currentUser.id} />
             <h1>Registered Users</h1>
+            <div className="searchbar-container">
+            <Form.Control
+                    className="searchbar"
+                    type="text"
+                    placeholder="Search..."
+                    value={searchPeople}
+                    onChange={({target}) => setSearchPeople(target.value)}
+                ></Form.Control>
+                </div>
             <ul>
                 <div className="people-grid">
                 { usersList }
                 </div>
             </ul>
-        </>
+        </div>
     )
 }
 
