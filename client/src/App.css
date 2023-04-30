@@ -84,6 +84,9 @@ li {
 	margin: 16px;
 	background-color: var(--BG-COLOR-SECONDARY);
 	border-radius: var(--CARD-ROUNDING);
+	height: auto !important;
+	display:flex !important;
+	flex-direction:column !important;
 }
 
 .go-card.go-card-form {
@@ -103,13 +106,10 @@ li {
 	border-radius: 0 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING);
 }
 
-.go-location-list .col {
-	margin-top: 0;
-	padding-top: 0;
-}
 
 .go-location-card {
 	margin-bottom: 0;
+	
 }
 
 .go-location-card .col {
@@ -128,7 +128,7 @@ li {
 }
 
 .go-location-card-img-wrapper {
-	max-height: 300px;
+	max-height: 100%;
 	width: 100%;
 	border-radius: 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING) 0;
 	overflow: hidden;
@@ -215,6 +215,13 @@ li {
 	justify-content: center;
 
 }
+.location-grid {
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(299px, 299px));
+    grid-gap: 20px;
+    padding: 20px;
+	justify-content: center;
+}
 .profile-Card {
 	height: 200px;
 	width:300px;
@@ -228,4 +235,15 @@ li {
 .nav-link {
 	color:"white" !important;
 	text-decoration:"underline" !important;
+}
+
+.searchbar {
+	width: 300px !important;
+	border: 2px solid #528560 !important;
+	box-shadow: none !important;
+}
+.searchbar-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
