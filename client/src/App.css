@@ -57,6 +57,11 @@ li {
 	color: white !important;
 }
 
+.nav-link {
+	--bs-nav-link-color: #fff;
+	--bs-nav-link-hover-color: #ccc;
+}
+
 .progress {
 	background-color: var(--BG-COLOR-GREY) !important;
 }
@@ -73,6 +78,15 @@ li {
 	margin: 16px;
 	background-color: var(--BG-COLOR-SECONDARY);
 	border-radius: var(--CARD-ROUNDING);
+}
+
+.go-navbar-profile-wrapper {
+	background-color: var(--BG-COLOR-SECONDARY);
+}
+
+.go-navbar-profile-wrapper .nav-link {
+	--bs-nav-link-color: #000;
+	--bs-nav-link-hover-color: #333;
 }
 
 .go-progress-header .progress {

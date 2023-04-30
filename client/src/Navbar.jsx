@@ -32,10 +32,10 @@ const Navingbar = ({ userID }) => { // user ID is the currently logged in user, 
 		  { user && user.name && user.password
 		    ?
 				<Nav>
-					<Nav.Link style={{color:"white"}} onClick={() => navigate("/people")}>People</Nav.Link>
-					<Nav.Link style={{color:"white"}} onClick={() => navigate("/locations")}>Locations</Nav.Link>
-					<div style={{backgroundColor:"grey"}}>
-					<Nav.Link style={{color:"white"}} onClick={() => navigate("/user/" + user.id)}>{ user.name }</Nav.Link>
+					<Nav.Link onClick={() => navigate("/people")}>People</Nav.Link>
+					<Nav.Link onClick={() => navigate("/locations")}>Locations</Nav.Link>
+					<div className='go-navbar-profile-wrapper'>
+					  <Nav.Link onClick={() => navigate("/user/" + user.id)}>{ user.name }</Nav.Link>
 					</div>
 				</Nav>
 			:
