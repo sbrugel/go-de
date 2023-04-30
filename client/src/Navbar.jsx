@@ -28,13 +28,13 @@ const Navingbar = ({ userID }) => { // user ID is the currently logged in user, 
     <>
       <Navbar expand="sm">
         <Container>
-          <Navbar.Brand onClick={() => navigate("/")}>GO-DE</Navbar.Brand>
+          <Navbar.Brand style={{color:"white",cursor:"pointer",textDecoration:"underline"}}onClick={() => navigate("/")}>GO-DE</Navbar.Brand>
 		  { user && user.name && user.password
 		    ?
 				<Nav>
-					<Nav.Link style={{color:"white"}} onClick={() => navigate("/people")}>People</Nav.Link>
-					<Nav.Link style={{color:"white"}} onClick={() => navigate("/locations")}>Locations</Nav.Link>
-					<div style={{backgroundColor:"grey"}}>
+					<Nav.Link className="navbar-link" onClick={() => navigate("/people")}>People</Nav.Link>
+					<Nav.Link style={{color:"white",textDecoration:"underline"}} onClick={() => navigate("/locations")}>Locations</Nav.Link>
+					<div style={{backgroundColor:"grey",border: "1px solid black"}}>
 					<Nav.Link style={{color:"white"}} onClick={() => navigate("/user/" + user.id)}>{ user.name }</Nav.Link>
 					</div>
 				</Nav>

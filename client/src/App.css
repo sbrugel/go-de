@@ -133,8 +133,8 @@ li {
 
 .user-followers {
 	border-radius: 10px;
-	width:200px;
 	height: 500px;
+	width:325px;
 	background-color: var(--BG-COLOR-SECONDARY);
 	text-align: center;
 }
@@ -151,12 +151,20 @@ li {
     grid-template-columns: repeat(auto-fit, minmax(299px, 299px));
     grid-gap: 20px;
     padding: 20px;
+	justify-content: center;
 
 }
 .profile-Card {
 	height: 200px;
-	
+	width:300px;
+	cursor: pointer;
+	color:black;
+	font-size: 20px;
 }
 .profile-card-description {
 	text-align: center;
+}
+.nav-link {
+	color:"white" !important;
+	text-decoration:"underline" !important;
 }

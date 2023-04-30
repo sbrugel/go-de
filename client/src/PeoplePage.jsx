@@ -22,13 +22,14 @@ const PeoplePage = ({ currentUser }) => {
         if (!users) return;
         
         const ulUsers = users.map((u) => {
-            return <div>
+            return <div onClick={() => navigate("/user/" + u.id)}>
                 <Card className="profile-Card">
+               
                     <div style={{padding:"20px", backgroundColor:"var(--BG-COLOR-SECONDARY)"}}>
-                <Image thumbnail src="http://clipart-library.com/images_k/man-profile-silhouette/man-profile-silhouette-8.png"  />
+                <Image thumbnail src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"  />
                     <Card.Body className="profile-card-description">
                     
-                <a href="#" onClick={() => navigate("/user/" + u.id)}>{ u.name }</a>
+                <a>{ u.name }</a>
                     </Card.Body>
                     </div>
                 </Card>
