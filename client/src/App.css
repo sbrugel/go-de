@@ -89,7 +89,8 @@ li {
 	display:flex !important;
 	flex-direction:column !important;
 	text-align: center;
-	margin-right: 10px;
+	
+	
 }
 
 .go-card.go-card-form {

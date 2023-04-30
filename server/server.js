@@ -243,6 +243,14 @@ app.get("/events", (req, res) => {
         });
 });
 
+// get event by location ID
+app.get("/events/bylocation/:lid", (req, res) => {
+    Event.find({ locationID: req.params.lid }).exec()
+        .then((events) => {
+            res.json(events);
+        });
+});
+
 // get events by user ID
 app.get("/events/byuser/:uid", (req, res) => {
     Event.find({ userID: req.params.uid }).exec()

@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import { Button } from "react-bootstrap";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 const UserPage = ({ currentUser }) => {
   let { id } = useParams();
@@ -20,6 +21,7 @@ const UserPage = ({ currentUser }) => {
 
   const [feedDisplay, setFeedDisplay] = useState();
   const [followingDisplay, setFollowingDisplay] = useState();
+  const [progressDisplay, setProgressDisplay] = useState();
 
   const [isFollowing, setIsFollowing] = useState(false);
 
@@ -47,6 +49,22 @@ const UserPage = ({ currentUser }) => {
     createFeed().then((res) => {
       setFeedDisplay(res);
     });
+
+    let numLocations;
+    axios.get("http://localhost:5000/locations")
+      .then(async (res) => {
+          numLocations = res.data.length;
+          setProgressDisplay(
+            <div style={{
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              paddingBottom: "20px"
+            }}>
+              <p>{userEvents.length} of {numLocations} locations visited.</p>
+              <ProgressBar min={0} now={userEvents.length > numLocations ? numLocations : userEvents.length} max={numLocations} />
+            </div>
+          )
+      })
   }, [userEvents]);
 
   const createFeed = async () => {
@@ -107,6 +125,7 @@ const UserPage = ({ currentUser }) => {
         <Row>
           <Col className="col-8" style={{ textAlign: "center" }}>
             <h3 className="user-page-status">{user.name}'s Profile</h3>
+            { progressDisplay }
             {currUser.id !== user.id ? (
               <Button
                 variant={!isFollowing ? "success" : "secondary"}
