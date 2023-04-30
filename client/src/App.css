@@ -19,9 +19,10 @@
 
 body {
 	margin: 0;
-	background-attachment: fixed,fixed,fixed;
-	background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url(https://destateparks.blog/wp-content/uploads/sites/4273/2021/03/BVSP_Fall_Photos_CDC_2020-52-RESIZE-1024x682.jpg);
-	background-size: cover,cover,cover;
+	background-attachment: fixed;
+	background-image: url(https://i.imgur.com/F9rZOdC.png);
+	background-size: cover;
+	background-repeat: no-repeat;
 	font-family: 'Average', serif !important;
 }
 
@@ -87,6 +88,9 @@ li {
 	height: auto !important;
 	display:flex !important;
 	flex-direction:column !important;
+	text-align: center;
+	
+	
 }
 
 .go-card.go-card-form {
@@ -194,7 +198,8 @@ li {
 
 .user-followers {
 	border-radius: 10px;
-	height: 500px;
+	font-size: 15px;
+	min-height: 500px;
 	width:325px;
 	background-color: var(--BG-COLOR-SECONDARY);
 	text-align: center;
