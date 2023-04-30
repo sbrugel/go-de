@@ -2,7 +2,8 @@ import Navingbar from "./Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { Card } from "react-bootstrap";
+import {Image }from "react-bootstrap";
 const PeoplePage = ({ currentUser }) => {
     const navigate = useNavigate();
 
@@ -19,11 +20,20 @@ const PeoplePage = ({ currentUser }) => {
 
     useEffect(() => {
         if (!users) return;
-
+        
         const ulUsers = users.map((u) => {
-            return <li>
-                <a href="#" onClick={() => navigate("/user/" + u.id)}>{ u.name }</a>
-            </li>
+            return <div onClick={() => navigate("/user/" + u.id)}>
+                <Card className="profile-Card">
+               
+                    <div style={{padding:"20px", backgroundColor:"var(--BG-COLOR-SECONDARY)"}}>
+                <Image thumbnail src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"  />
+                    <Card.Body className="profile-card-description">
+                    
+                <a>{ u.name }</a>
+                    </Card.Body>
+                    </div>
+                </Card>
+            </div>
         })
         setUsersList(ulUsers);
     }, [users])
@@ -33,7 +43,9 @@ const PeoplePage = ({ currentUser }) => {
             <Navingbar userID={currentUser.id} />
             <h1>Registered Users</h1>
             <ul>
+                <div className="people-grid">
                 { usersList }
+                </div>
             </ul>
         </>
     )

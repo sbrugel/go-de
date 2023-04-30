@@ -7,8 +7,8 @@ import Col from "react-bootstrap/Col";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import './App.css'
-import {Button} from "react-bootstrap";
+import "./App.css";
+import { Button } from "react-bootstrap";
 
 const UserPage = ({ currentUser }) => {
   let { id } = useParams();
@@ -28,7 +28,9 @@ const UserPage = ({ currentUser }) => {
       setUser(res.data);
     });
     axios.get(`http://localhost:5000/events/byuser/${id}`).then((res) => {
-      setUserEvents(res.data.sort((a, b) => new Date(b.date) - new Date(a.date)));
+      setUserEvents(
+        res.data.sort((a, b) => new Date(b.date) - new Date(a.date))
+      );
     });
   }, [id]);
 
@@ -39,7 +41,6 @@ const UserPage = ({ currentUser }) => {
       setFollowingDisplay(res);
     })
   }, [user]);
-
   useEffect(() => {
     if (!userEvents) return; // don't do anything when initially loading
 
@@ -61,7 +62,16 @@ const UserPage = ({ currentUser }) => {
         const eventLocation = locationResponse.data.name;
         return (
           <li key={event.id}>
-            <strong>{eventUser}</strong> went to <strong>{eventLocation}</strong> on <u>{ new Date(event.date).toLocaleDateString('en-us', { year: 'numeric', month: 'long', day: 'numeric' })}</u>{ event.comments ? `: "${event.comments}"` : '.'}
+            <strong>{eventUser}</strong> went to{" "}
+            <strong>{eventLocation}</strong> on{" "}
+            <u>
+              {new Date(event.date).toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </u>
+            {event.comments ? `: "${event.comments}"` : "."}
           </li>
         );
       })
@@ -91,15 +101,12 @@ const UserPage = ({ currentUser }) => {
       <Navingbar userID={currUser.id} />
       <Container>
         <Row>
-          <Col className="col-8" style={{textAlign:"center"}}>
-            <h3 className="user-page-status">
-              {user.name}'s Profile
-            </h3>
+          <Col className="col-8" style={{ textAlign: "center" }}>
+            <h3 className="user-page-status">{user.name}'s Profile</h3>
             {currUser.id !== user.id ? (
               <Button
                 variant={ !isFollowing ? "success" : "secondary"}
                 type="submit"
-                
                 onClick={async () => {
                   if (!isFollowing) {
                     axios

@@ -28,7 +28,7 @@ const Navingbar = ({ userID }) => { // user ID is the currently logged in user, 
     <>
       <Navbar expand="sm">
         <Container>
-          <Navbar.Brand onClick={() => navigate("/")}>GO-DE</Navbar.Brand>
+          <Navbar.Brand style={{color:"white",cursor:"pointer",textDecoration:"underline"}}onClick={() => navigate("/")}>GO-DE</Navbar.Brand>
 		  { user && user.name && user.password
 		    ?
 				<Nav>
