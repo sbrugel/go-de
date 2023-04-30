@@ -64,31 +64,6 @@ const UserPage = ({ currentUser }) => {
               <ProgressBar min={0} now={userEvents.length > numLocations ? numLocations : userEvents.length} max={numLocations} />
             </div>
           )
-          // const userPromises = users.map(async (u) => {
-          //     if((u.name.toLowerCase().includes(searchPeople.toLowerCase())||searchPeople==="")) {
-          //         let visited = 0;
-          //         await axios.get("http://localhost:5000/events/byuser/" + u.id)
-          //         .then((res) => {
-          //             visited = res.data.length;
-          //         });
-          //         return (
-          //         <div onClick={() => navigate("/user/" + u.id)}>
-          //             <Card className="profile-Card">
-          //             <div style={{ padding: "20px", backgroundColor: "var(--BG-COLOR-SECONDARY)" }}>
-          //                 <Image thumbnail src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png" />
-          //                 <Card.Body className="profile-card-description">
-          //                 <a href="#">{u.name}</a>
-          //                 <p>{visited} of {numLocations} visited.</p>
-          //                 <ProgressBar min={0} now={visited} max={numLocations} />
-          //                 </Card.Body>
-          //             </div>
-          //             </Card>
-          //         </div>
-          //         );
-          //     }
-              
-          //   });
-          
       })
   }, [userEvents]);
 
