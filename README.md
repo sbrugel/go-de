@@ -14,15 +14,9 @@ Simon Brugel - Planning, Backend
 
 ## Summary
 
-### As a beginner hack...
+Delaware is a very small state. Many people, even including First State residents, often gloss over the many interesting locations/things in the state. Encouraging groups of people to explore Delaware and record their journeys through an appealing/motivating web application is an idea that highly appealed to us. An app to allow people to do those two things, share their outings with friends, and even compete with them to see who can visit every place the fastest would achieve this goal. This can consequently create/strengthen friendships, help people in our community get to know one another, and travel together to many types of places. It can also increase tourism and help out local businesses/groups around these locations.
 
-Delaware is a very small state. Many people, even including First State residents, often gloss over the many interesting locations/things in the state. There is no easy or motivating way to convince people of the places worthy of note the state, so having a page that presents this information in a captivating manner can increase tourism, which itself can contribute to the economy and local businesses postively.
-
-### As a community hack...
-
-Encouraging groups of people to explore the state surrounding them and record their journeys is an idea that highly appealed to us. An app to allow people to do those two things, share their outings with friends, and even compete with them to see who can visit every place the fastest would achieve this goal.
-
-## So just what is GO-DE?
+### So just what is GO-DE?
 
 GO-DE is a full-stack, social-media like site where registered users are given an expansive list of interesting places in Delaware to visit, ranging from parks and beaches, to landmarks and historic sites. Users can mark these places as visited and comment on how their visit went/any thoughts and other remarks, and aim to visit every location that is on our list.
 
