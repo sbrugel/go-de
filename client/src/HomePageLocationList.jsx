@@ -23,10 +23,6 @@ export const LocationList = ({ currentUser }) => {
 		setRecommendedID(Number.parseInt((Math.random() * locations.length) + 1));
 	}, [locations])
 
-	useEffect(() => {
-		console.log(recommendedID + " is the id")
-	}, [recommendedID])
-
 	return (
 		<Container className='go-location-list go-card'>
 			<Row>

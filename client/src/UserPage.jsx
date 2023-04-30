@@ -100,8 +100,6 @@ const UserPage = ({ currentUser }) => {
   };
 
   const createFollowingDisplay = async () => {
-    console.log("user is ");
-    console.log(user);
     const following = await Promise.all(
       user.following.map(async (u) => {
         const userResponse = await axios.get(

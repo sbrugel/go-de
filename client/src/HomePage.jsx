@@ -23,21 +23,14 @@ const HomePage = ({ currentUser }) => {
 	}, [])
 
 	useEffect(() => {
-		console.log(currUser)
-		console.log('dfsdfsd')
 		createFeed();
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currUser])
 
 	const createFeed = async () => {
-		console.log('beep boop')
-		console.log(currUser.following)
 		for (const user of currUser.following) {
-			console.log(user)
 			axios.get("http://localhost:5000/events/byuser/" + user)
 				.then((res) => {
-					console.log('feed from ' + user);
-					console.log(res.data);
 					for (const event of res.data) {
 						setEventsList(prevState => [...prevState, event].sort((a, b) => new Date(b.date) - new Date(a.date)));
 					}
@@ -57,7 +50,6 @@ const HomePage = ({ currentUser }) => {
 				  );
 				  const eventUser = userResponse.data.name;
 				  const eventLocation = locationResponse.data.name;
-				  console.log('in the await now')
 				  return (
 					<li key={event.id}>
 					  <strong>{eventUser}</strong> went to{" "}
@@ -90,7 +82,7 @@ const HomePage = ({ currentUser }) => {
 						<ProgressHeader currentUser={ currUser } />
 						<LocationList currentUser={currUser} />
 					</Col>
-					<Col className='col-4 overflow-y-auto' style={{ maxHeight: "450px" }}>
+					<Col className='col-4 overflow-auto' style={{ maxHeight: "450px" }}>
 						<div className='go-card' style={{width: '100%', height: '100%', padding: '10px'}}>
 							<h2>Your Feed</h2>
 							<ul>
