@@ -189,6 +189,13 @@ li {
 	margin-top: 8px;
 }
 
+.go-user-sidebar {
+	max-width: calc(100% - 32px);
+	max-height: 90vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
 .user-page-status {
 	margin: 16px;
 	background-color: var(--BG-COLOR-SECONDARY);
