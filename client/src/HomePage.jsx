@@ -15,14 +15,22 @@ const HomePage = ({ currentUser }) => {
 	const [feed, setFeed] = useState();
 
 	useEffect(() => {
-		console.log('hi')
-		createFeed();
+		axios.get("http://localhost:5000/users/" + currentUser.id + "?timestamp=" + Date.now(), {cache: false})
+			.then((res) => {
+				setCurrUser(currentUser);
+			})
 	}, [])
+
+	useEffect(() => {
+		console.log(currUser)
+		console.log('dfsdfsd')
+		createFeed();
+	}, [currUser])
 
 	const createFeed = async () => {
 		console.log('beep boop')
-		console.log(currentUser.following)
-		for (const user of currentUser.following) {
+		console.log(currUser.following)
+		for (const user of currUser.following) {
 			console.log(user)
 			axios.get("http://localhost:5000/events/byuser/" + user)
 				.then((res) => {
@@ -77,8 +85,8 @@ const HomePage = ({ currentUser }) => {
 			<Container className='HomePage'>
 				<Row>
 					<Col className='col-8'>
-						<ProgressHeader currentUser={ currentUser } />
-						<LocationList currentUser={currentUser} />
+						<ProgressHeader currentUser={ currUser } />
+						<LocationList currentUser={currUser} />
 					</Col>
 					<Col className='col-4'>
 						<div className='go-card' style={{width: '100%', height: '100%', padding: '10px'}}>
