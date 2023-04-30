@@ -99,10 +99,6 @@ li {
 	border-radius: 0 0 var(--CARD-ROUNDING) var(--CARD-ROUNDING);
 }
 
-.go-location-list .col {
-	margin-top: 0;
-	padding-top: 0;
-}
 
 .go-location-card {
 	margin-bottom: 0;
@@ -194,6 +190,12 @@ li {
     padding: 20px;
 	justify-content: center;
 
+}
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }
 .profile-Card {
 	height: 200px;
