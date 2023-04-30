@@ -18,16 +18,18 @@ const PeoplePage = ({ currentUser }) => {
             })
     }, [])
     function determineSearch({u}){
-        if(u?.name.toLowerCase().includes(searchPeople.toLowerCase)||searchPeople==="" ||searchPeople.toLowerCase().includes(u?.name.toLowerCase()) ){
+        console.log("rerender");
+        if(u.name !== undefined){
+        if(u.name.toLowerCase().includes(searchPeople.toLowerCase)||searchPeople==="" ||searchPeople.toLowerCase().includes(u.name.toLowerCase()) ){
             return true;
         } 
+        }
         return false;
     }
     useEffect(() => {
         if (!users) return;
-        
         const ulUsers = users.map((u) => {
-            if(determineSearch(u)){
+            if((u.name.toLowerCase().includes(searchPeople.toLowerCase())||searchPeople==="" ||searchPeople.toLowerCase().includes(u.name.toLowerCase()) )){
             return <div onClick={() => navigate("/user/" + u.id)}>
                 <Card className="profile-Card">
                
@@ -43,24 +45,27 @@ const PeoplePage = ({ currentUser }) => {
             }
         })
         setUsersList(ulUsers);
-    }, [users])
+    }, [users,searchPeople])
 
     return (
-        <>
+        <div>
             <Navingbar userID={currentUser.id} />
             <h1>Registered Users</h1>
+            <div className="searchbar-container">
             <Form.Control
+                    className="searchbar"
                     type="text"
                     placeholder="Search..."
                     value={searchPeople}
                     onChange={({target}) => setSearchPeople(target.value)}
                 ></Form.Control>
+                </div>
             <ul>
                 <div className="people-grid">
                 { usersList }
                 </div>
             </ul>
-        </>
+        </div>
     )
 }
 
