@@ -19,9 +19,10 @@
 
 body {
 	margin: 0;
-	background-attachment: fixed,fixed,fixed;
-	background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url(https://destateparks.blog/wp-content/uploads/sites/4273/2021/03/BVSP_Fall_Photos_CDC_2020-52-RESIZE-1024x682.jpg);
-	background-size: cover,cover,cover;
+	background-attachment: fixed;
+	background-image: url(https://destateparks.blog/wp-content/uploads/sites/4273/2021/03/BVSP_Fall_Photos_CDC_2020-52-RESIZE-1024x682.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 	font-family: 'Average', serif !important;
 }
 
