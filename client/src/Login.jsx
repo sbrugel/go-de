@@ -4,7 +4,10 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Navingbar from './Navbar';
+import './App.css';
 
 const Login = ({ setLoginUser }) => {
   const navigate = useNavigate();
@@ -37,49 +40,45 @@ const Login = ({ setLoginUser }) => {
   return (
     <>
 	  <Navingbar userID={0} />
-      <div style={{
-        padding: '20px'
-      }}>
-        <h1>Login to your account</h1>
+      <div className="go-login-wrapper">
+	    <h1>Login to your account</h1>
         <p>
           Don't have an account? <a href="/register">Register here.</a>
         </p>
-        <div>
-          <form action="#">
-            <div>
-              <input
-                type="text"
-                id="sign-in-name"
-                name="name"
-                value={user.name}
-                onChange={handleChange}
-                placeholder="Username"
-                autocomplete="off"
-              />
-            </div>
-            <div class="flex flex-col mb-6">
-              <input
-                type="password"
-                id="sign-in-password"
-                name="password"
-                value={user.password}
-                onChange={handleChange}
-                placeholder="Password"
-              />
-            </div>
-            <div class="flex w-full">
-              <button
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault();
-                  login();
-                }}
-              >
-                Login
-              </button>
-            </div>
-          </form>
-        </div>
+		<Form>
+			<Form.Group>
+				<Form.Control
+					type="text"
+					id="sign-in-name"
+					name="name"
+					value={user.name}
+					onChange={handleChange}
+					placeholder="Username"
+					autocomplete="off"
+				/>
+			</Form.Group>
+			<Form.Group>
+				<Form.Control
+					type="password"
+					id="sign-in-password"
+					name="password"
+					value={user.password}
+					onChange={handleChange}
+					placeholder="Password"
+				/>
+			</Form.Group>
+			<Form.Group>
+				<Button
+					type="submit"
+					onClick={(e) => {
+						e.preventDefault();
+						login();
+					}}
+				>
+					Login
+				</Button>
+			</Form.Group>
+		</Form>
       </div>
       <ToastContainer />
     </>

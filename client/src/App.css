@@ -27,6 +27,10 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center !important;
 }
 
+h1 {
+	padding-top: 4px;
+}
+
 li {
 	text-align: left !important;
 }
@@ -136,6 +140,25 @@ li {
 .go-location-card p {
 	text-indent: 1.5em;
 	margin-left: 8px;
+}
+
+.go-login-wrapper {
+	margin: 0 auto;
+	text-align: center;
+	width: 25%;
+	margin-top: 5vh;
+}
+
+.go-login-wrapper p {
+	margin-bottom: 8px;
+}
+
+.go-login-wrapper form > :first-child {
+	margin-top: 0px;
+}
+
+.go-login-wrapper form > * {
+	margin-top: 8px;
 }
 
 .user-page-status {

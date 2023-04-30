@@ -3,7 +3,10 @@ import axios from "axios";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Navingbar from './Navbar';
+import './App.css';
 
 const Register = () => {
     const [user, setUser] = useState({
@@ -36,44 +39,42 @@ const Register = () => {
     return (
       <>
 	    <Navingbar user={0} />
-        <div style={{
-          padding: '20px'
-        }}>
+        <div className="go-login-wrapper">
           <h1>Create a new account</h1>
-          <p>Already have an account? <a href="/login">Sign in here.</a></p>
-          <div class="p-6 mt-8">
-            <form action="#">
-              <div>
-                  <input
-                      type="text"
-                      id="create-account-name"
-                      name="name"
-                      value={ user.name }
-                      onChange={ handleChange }
-                      autocomplete="off"
-                      placeholder="Username"
-                  />
-              </div>
-              <div>
-                  <input
-                    type="password"
-                    id="create-account-password"
-                    name="password"
-                    value={ user.password }
-                    onChange={ handleChange }
-                    placeholder="Password"
-                  />
-              </div>
-              <div>
-                <button
-                  type="submit"
-                  onClick={register}
-                >
-                  Register
-                </button>
-              </div>
-            </form>
-          </div>
+          <p>
+			Already have an account? <a href="/login">Sign in here.</a>
+		  </p>
+		  <Form>
+				<Form.Group>
+					<Form.Control
+						type="text"
+						id="create-account-name"
+						name="name"
+						value={ user.name }
+						onChange={ handleChange }
+						autocomplete="off"
+						placeholder="Username"
+					/>
+				</Form.Group>
+				<Form.Group>
+					<Form.Control
+						type="password"
+						id="create-account-password"
+						name="password"
+						value={ user.password }
+						onChange={ handleChange }
+						placeholder="Password"
+					/>
+				</Form.Group>
+				<Form.Group>
+					<Button
+						type="submit"
+						onClick={register}
+					>
+						Register
+					</Button>
+				</Form.Group>
+		  </Form>
         </div>
         <ToastContainer />
       </>
