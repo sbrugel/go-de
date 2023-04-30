@@ -15,7 +15,6 @@ export const LocationCard = ({ id, showButton, currentUser }) => {
 	const [otherVisited, setOtherVisited] = useState([]);
 
 	useEffect(() => {
-		console.log('render with ID ' + id)
 		axios.get("http://localhost:5000/locations/" + id)
 			.then((res) => {
 				setLocation(res.data);
@@ -24,14 +23,12 @@ export const LocationCard = ({ id, showButton, currentUser }) => {
 			.then((res) => {
 				for (const event of res.data) {
 					if (event.locationID === id) {
-						console.log('nope')
 						setToggleButton(false);
 					}
 				}
 			})
 		axios.get("http://localhost:5000/events/bylocation/" + id)
 			.then((res) => {
-				console.log('here')
 				const userNames = [];
 				for (const event of res.data) {
 					axios.get("http://localhost:5000/users/" + event.userID)
