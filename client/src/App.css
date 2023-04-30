@@ -86,6 +86,10 @@ li {
 	border-radius: var(--CARD-ROUNDING);
 }
 
+.go-card.go-card-form {
+	background-color: var(--BG-COLOR-LIGHTGREY);
+}
+
 .go-navbar-profile-wrapper {
 	background-color: var(--BG-COLOR-SECONDARY);
 }
@@ -145,7 +149,6 @@ li {
 	text-align: center;
 	width: 30%;
 	margin-top: 5vh;
-	background-color: var(--BG-COLOR-LIGHTGREY);
 	padding: 16px;
 }
 
@@ -158,6 +161,23 @@ li {
 }
 
 .go-login-wrapper form > * {
+	margin-top: 8px;
+}
+
+.go-submit-form-wrapper {
+	padding: 16px;
+}
+
+.go-submit-form-wrapper .go-submit-form-center-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.go-submit-form-wrapper .form-control {
+	width: 95%;
+}
+
+.go-submit-form-wrapper .btn {
 	margin-top: 8px;
 }
 

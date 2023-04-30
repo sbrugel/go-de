@@ -40,7 +40,7 @@ const Login = ({ setLoginUser }) => {
   return (
     <>
 	  <Navingbar userID={0} />
-      <div className="go-login-wrapper go-card">
+      <div className="go-login-wrapper go-card go-card-form">
 	    <h1>Login to your account</h1>
         <p>
           Don't have an account? <a href="/register">Register here.</a>
