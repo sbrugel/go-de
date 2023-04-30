@@ -19,6 +19,7 @@ const UserPage = ({ currentUser }) => {
   const [userEvents, setUserEvents] = useState(null);
 
   const [feedDisplay, setFeedDisplay] = useState();
+  const [followingDisplay, setFollowingDisplay] = useState();
 
   const [isFollowing, setIsFollowing] = useState(false);
 
@@ -35,13 +36,16 @@ const UserPage = ({ currentUser }) => {
 
   useEffect(() => {
     setIsFollowing(currUser.following.includes(user.id));
+
+    createFollowingDisplay().then((res) => {
+      setFollowingDisplay(res);
+    })
   }, [user]);
   useEffect(() => {
     if (!userEvents) return; // don't do anything when initially loading
 
     createFeed().then((res) => {
       setFeedDisplay(res);
-      console.log(feedDisplay);
     });
   }, [userEvents]);
 
@@ -74,6 +78,24 @@ const UserPage = ({ currentUser }) => {
     );
     return feedItems;
   };
+  
+  const createFollowingDisplay = async () => {
+    console.log('user is ' );
+    console.log(user)
+    const following = await Promise.all(
+      user.following.map(async (u) => {
+        const userResponse = await axios.get(`http://localhost:5000/users/${u}`);
+        const eventUser = userResponse.data.name;
+        return (
+          <li key={u}>
+            <a href="#" onClick={() => navigate("/user/" + u)}>{ eventUser }</a>
+          </li>
+        )
+      })
+    )
+    return following;
+  }
+
   return (
     <>
       <Navingbar userID={currUser.id} />
@@ -83,7 +105,7 @@ const UserPage = ({ currentUser }) => {
             <h3 className="user-page-status">{user.name}'s Profile</h3>
             {currUser.id !== user.id ? (
               <Button
-                variant="secondary"
+                variant={ !isFollowing ? "success" : "secondary"}
                 type="submit"
                 onClick={async () => {
                   if (!isFollowing) {
@@ -126,6 +148,9 @@ const UserPage = ({ currentUser }) => {
           <Col className="col-4">
             <div className="user-followers">
               <h1>Following</h1>
+              <ul>
+                { followingDisplay }
+              </ul>
             </div>
           </Col>
         </Row>
