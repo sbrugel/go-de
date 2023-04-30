@@ -41,7 +41,7 @@ export const LocationCard = ({ id, showButton, currentUser }) => {
 						<Col className='col-6'>
 							<div className='go-location-card-img-wrapper'>
 								<img src={location.imgURL} alt={location.name} />
-								<Button disabled={!toggleButton} className='go-location-card-visited-btn' onClick={() => navigate("/submit/" + location.id)}>{!toggleButton ? 'Mark ' : ''}Visited</Button>
+								<Button disabled={!toggleButton} className='go-location-card-visited-btn' onClick={() => navigate("/submit/" + location.id)}>{toggleButton ? 'Mark ' : ''}Visited</Button>
 							</div>
 						</Col>
 					</Row>
