@@ -2,11 +2,11 @@
 
 **A project for the University of Delaware HenHacks Hackathon 2023**
 
-_by Simon Brugel, Brendan Lewis, & Paul Kearney_
+_by Simon Brugel, Laura Lewis, & Paul Kearney_
 
 ## Acknowledgements
 
-Brendan Lewis - Design, Frontend, Styling
+Laura Lewis - Design, Frontend, Styling
 
 Paul Kearney - Planning, Design, Frontend
 
